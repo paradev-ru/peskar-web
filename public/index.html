@@ -9,6 +9,9 @@
         .container {
             max-width: 1024px;
         }
+        .wait-time{
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -28,14 +31,17 @@
                         <th>State</th>
                     </tr>
                     <tr ng-repeat="job in jobs">
-                        <td><a href="{{ job.download_url }}">{{ job.download_url }}</a></td>
+                        <td><a href="{{ job.download_url }}">{{ job.download_url }}</a> <span class="wait-time" ng-show="job.state == 'pending'">– {{ job.added_at | diff }}</span></td>
                         <td>{{ job.state }}</td>
                     </tr>
                 </table>
             </div>
-            <div ng-hide="workers | isEmpty">
+            <div>
                 <h2>Workers</h2>
-                <table class="table">
+                <p ng-show="workers | isEmpty">
+                    Empty list.
+                </p>
+                <table class="table" ng-hide="workers | isEmpty">
                     <tr>
                         <th>IP</th>
                         <th>State</th>
