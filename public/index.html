@@ -48,10 +48,12 @@
                 <table class="table" ng-hide="workers | isEmpty">
                     <tr>
                         <th>IP</th>
+                        <th>User-Agent</th>
                         <th>State</th>
                     </tr>
                     <tr ng-repeat="worker in workers">
-                        <td>{{ worker.ip }} ({{ worker.user_agent }})</td>
+                        <td>{{ worker.ip }}</td>
+                        <td>{{ worker.user_agent }}</td>
                         <td>{{ worker.state }}</td>
                     </tr>
                 </table>
