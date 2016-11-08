@@ -3,6 +3,7 @@
 <head>
     <title>Peskar Web Control</title>
     <meta http-equiv=Content-Type content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <style>
@@ -23,9 +24,12 @@
             <a href="#" class="alert-link">Cant connect to API server.</a>
         </div>
         <div ng-show="online">
-            <div ng-hide="jobs | isEmpty">
+            <div>
                 <h2>Jobs</h2>
-                <table class="table">
+                <p ng-show="jobs | isEmpty">
+                    Empty list.
+                </p>
+                <table class="table" ng-hide="jobs | isEmpty">
                     <tr>
                         <th>Download URL</th>
                         <th>State</th>
