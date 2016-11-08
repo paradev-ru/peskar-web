@@ -31,11 +31,11 @@
                 </p>
                 <table class="table" ng-hide="jobs | isEmpty">
                     <tr>
-                        <th>Download URL</th>
+                        <th>Filename</th>
                         <th>State</th>
                     </tr>
                     <tr ng-repeat="job in jobs">
-                        <td><a href="{{ job.download_url }}">{{ job.download_url }}</a> <span class="wait-time" ng-show="job.state == 'pending'">– {{ job.added_at | diff }}</span></td>
+                        <td><a href="{{ job.download_url }}">{{ job.download_url | filename}}</a> <span class="wait-time" ng-show="job.state == 'pending'">– {{ job.added_at | diff }}</span></td>
                         <td>{{ job.state }}</td>
                     </tr>
                 </table>

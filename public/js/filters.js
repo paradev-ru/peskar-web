@@ -32,4 +32,10 @@ angular.module("app")
 
             return result;
         };
+    })
+    .filter('filename', function() {
+        return function(input) {
+            filename = input.replace(/^.*[\\\/]/, '')
+            return filename;
+        };
     });
