@@ -51,7 +51,7 @@
                         <th>State</th>
                     </tr>
                     <tr ng-repeat="worker in workers">
-                        <td>{{ worker.ip }}</td>
+                        <td>{{ worker.ip }} ({{ worker.user_agent }})</td>
                         <td>{{ worker.state }}</td>
                     </tr>
                 </table>
