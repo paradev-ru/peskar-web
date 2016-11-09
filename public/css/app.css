@@ -140,7 +140,7 @@ a.entity-link:hover .entity-item {
     min-height: 120px;
 }
 
-.job-title {
+.line-limit {
     white-space: nowrap;
     overflow: hidden;
 }
