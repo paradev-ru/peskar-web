@@ -1,5 +1,6 @@
-angular.module("app")
-    .filter("isEmpty", function () {
+angular.module('myApp.filters', [])
+
+    .filter('isEmpty', function () {
         var bar;
         return function (obj) {
             for (bar in obj) {
@@ -10,6 +11,7 @@ angular.module("app")
             return true;
         };
     })
+
     .filter('diff', function() {
         return function(input) {
             input = new Date(input)
@@ -33,6 +35,7 @@ angular.module("app")
             return result;
         };
     })
+
     .filter('filename', function() {
         return function(input) {
             filename = input.replace(/^.*[\\\/]/, '')

@@ -1,5 +1,6 @@
-angular.module("app")
-    .controller("MainCtrl", function ($scope, $interval, API) {
+angular.module('myApp.controllers', [])
+
+    .controller('MainCtrl', function ($scope, $interval, API) {
         $scope.online = true;
         $scope.jobs = {};
         $scope.workers = {};
@@ -13,7 +14,7 @@ angular.module("app")
         function Boot() {
             GetStatus();
             GetWorkers();
-            GetJobs();   
+            GetJobs();
         }
 
         function GetStatus() {

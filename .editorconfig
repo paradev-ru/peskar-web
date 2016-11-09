@@ -1,0 +1,23 @@
+# EditorConfig is awesome: http://EditorConfig.org
+
+root = true
+
+[*]
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+[**.{php,py,yml,js}]
+insert_final_newline = true
+
+[makefile]
+indent_style = tabs
+
+[*.md]
+trim_trailing_whitespace = false
+
+[{.travis.yml,package.json,bower.json}]
+indent_size = 2
+indent_style = spaces
