@@ -16,7 +16,7 @@
 <div class="container padding">
     <div ng-repeat="job in jobs" class="entity-block">
         <a href="#job/{{ job.id }}" class="entity-link">
-            <div class="bs-callout entity-item" ng-class="{'bs-callout-success': job.state == 'working'}">
+            <div class="bs-callout entity-item" ng-class="{'bs-callout-success': job.state == 'working' || job.state == 'requested'}">
                 <h4 class="job-title" ng-show="job.name.length"><nobr>{{ job.name }}</nobr></h4>
                 <h4 class="job-title" ng-hide="job.name.length"><nobr>{{ job.download_url | filename }}</nobr></h4>
                 <p>{{ job.state }}<span class="wait-time" ng-show="job.state == 'pending'"> for a {{ job.added_at | diff }}</span></p>
