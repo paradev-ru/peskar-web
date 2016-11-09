@@ -1,6 +1,6 @@
 angular.module('myApp.services', [])
 
-    .service('API', function ($http) {
+    .service('API', function ($http, $rootScope, notification) {
         var apiHost = 'http://api.peskar.paradev.ru'
         this.getStatus = function () {
             return $http.get(
@@ -38,5 +38,14 @@ angular.module('myApp.services', [])
             return $http.delete(
                 apiHost + '/job/'+jobId+'/'
             );
+        };
+        this.getVersion = function () {
+            $http.get(apiHost + '/version/')
+                .success(function(data) {
+                    $rootScope.version = data;
+                })
+                .error(function() {
+                    notification('error', 'Cant get version info');
+                });
         };
     });

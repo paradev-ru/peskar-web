@@ -51,7 +51,8 @@ angular.module('myApp', [
             .otherwise('/');
     })
 
-    .run(function($rootScope, TitleFactory) {
+    .run(function($rootScope, TitleFactory, API) {
         $rootScope.partialsPath = 'partials';
         $rootScope.TitleFactory = TitleFactory;
+        API.getVersion();
     })
