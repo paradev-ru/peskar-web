@@ -66,6 +66,9 @@ angular.module('myApp.controllers', [])
         };
 
         $scope.delete = function() {
+            if (!confirm("Are you sure?")) {
+              return
+            }
             API.deleteJob($scope.jobId)
                 .success(function() {
                     $location.path('/job/');
