@@ -48,15 +48,15 @@
                 </tr>
                 <tr>
                     <td>Add time</td>
-                    <td>{{ job.added_at }}</td>
+                    <td>{{ job.added_at | date:'medium' }}</td>
                 </tr>
                 <tr>
                     <td>Start time</td>
-                    <td>{{ job.started_at }}</td>
+                    <td>{{ job.started_at | date:'medium' }}</td>
                 </tr>
                 <tr>
                     <td>Finish time</td>
-                    <td>{{ job.finished_at }}</td>
+                    <td>{{ job.finished_at | date:'medium' }}</td>
                 </tr>
             </table>
             <h4>Events log</h4>
