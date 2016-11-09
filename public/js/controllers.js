@@ -1,8 +1,40 @@
 angular.module('myApp.controllers', [])
 
-    .controller('MainCtrl', function ($scope, $interval, API) {
+    .controller('JobsController', function ($scope, $interval, API) {
         $scope.online = true;
         $scope.jobs = {};
+
+        Boot();
+
+        $interval(function() {
+            Boot();
+        }, 5000);
+
+        function Boot() {
+            GetStatus();
+            GetJobs();
+        }
+
+        function GetStatus() {
+            API.getStatus()
+                .success(function (result) {
+                    $scope.online = true;
+                })
+                .error(function (result) {
+                    $scope.online = false;
+                });
+        }
+
+        function GetJobs() {
+            API.getJobs()
+                .success(function (result) {
+                    $scope.jobs = result;
+                });
+        }
+    })
+
+    .controller('WorkersController', function ($scope, $interval, API) {
+        $scope.online = true;
         $scope.workers = {};
 
         Boot();
@@ -14,7 +46,6 @@ angular.module('myApp.controllers', [])
         function Boot() {
             GetStatus();
             GetWorkers();
-            GetJobs();
         }
 
         function GetStatus() {
@@ -31,13 +62,6 @@ angular.module('myApp.controllers', [])
             API.getWorkers()
                 .success(function (result) {
                     $scope.workers = result;
-                });
-        }
-
-        function GetJobs() {
-            API.getJobs()
-                .success(function (result) {
-                    $scope.jobs = result;
                 });
         }
     });

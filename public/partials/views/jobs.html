@@ -1,0 +1,34 @@
+<ng-include src="partialsPath + '/navbar.html'"></ng-include>
+
+<div class="title-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <h2>Jobs</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="alert alert-danger" role="alert" ng-show="!online">
+        <a href="#" class="alert-link">Cant connect to API server.</a>
+    </div>
+    <div ng-show="online">
+        <div>
+            <p ng-show="jobs | isEmpty">
+                Empty list.
+            </p>
+            <table class="table" ng-hide="jobs | isEmpty">
+                <tr>
+                    <th>Filename</th>
+                    <th>State</th>
+                </tr>
+                <tr ng-repeat="job in jobs">
+                    <td><a href="{{ job.download_url }}">{{ job.download_url | filename}}</a> <span class="wait-time" ng-show="job.state == 'pending'">– {{ job.added_at | diff }}</span></td>
+                    <td>{{ job.state }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

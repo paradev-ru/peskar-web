@@ -10,50 +10,7 @@
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body ng-cloak>
-    <div class="container" ng-controller="MainCtrl">
-        <div class="page-header">
-            <h1>Peskar Web Control</h1>
-        </div>
-        <div class="alert alert-danger" role="alert" ng-show="!online">
-            <a href="#" class="alert-link">Cant connect to API server.</a>
-        </div>
-        <div ng-show="online">
-            <div>
-                <h2>Jobs</h2>
-                <p ng-show="jobs | isEmpty">
-                    Empty list.
-                </p>
-                <table class="table" ng-hide="jobs | isEmpty">
-                    <tr>
-                        <th>Filename</th>
-                        <th>State</th>
-                    </tr>
-                    <tr ng-repeat="job in jobs">
-                        <td><a href="{{ job.download_url }}">{{ job.download_url | filename}}</a> <span class="wait-time" ng-show="job.state == 'pending'">– {{ job.added_at | diff }}</span></td>
-                        <td>{{ job.state }}</td>
-                    </tr>
-                </table>
-            </div>
-            <div>
-                <h2>Workers</h2>
-                <p ng-show="workers | isEmpty">
-                    Empty list.
-                </p>
-                <table class="table" ng-hide="workers | isEmpty">
-                    <tr>
-                        <th>IP</th>
-                        <th>User-Agent</th>
-                        <th>State</th>
-                    </tr>
-                    <tr ng-repeat="worker in workers">
-                        <td>{{ worker.ip }}</td>
-                        <td>{{ worker.user_agent }}</td>
-                        <td>{{ worker.state }}</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
+    <ng-view></ng-view>
     <script src="vendor/angular/angular.min.js"></script>
     <script src="vendor/angular-route/angular-route.min.js"></script>
     <script src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
