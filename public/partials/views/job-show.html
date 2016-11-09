@@ -26,6 +26,10 @@
                     <td>Name</td>
                     <td>{{ job.name }}</td>
                 </tr>
+                <tr ng-show="job.description.length">
+                    <td>Description</td>
+                    <td>{{ job.description }}</td>
+                </tr>
                 <tr ng-show="job.download_url.length">
                     <td>Download URL</td>
                     <td><a href="{{ job.download_url }}">{{ job.download_url }}</a></td>
