@@ -48,4 +48,13 @@ angular.module('myApp.services', [])
                     notification('error', 'Cant get version info');
                 });
         };
+        this.setState = function (jobId, state) {
+            job = {
+                state: state,
+            }
+            return $http.put(
+                apiHost + '/job/'+jobId+'/',
+                job
+            );
+        };
     });

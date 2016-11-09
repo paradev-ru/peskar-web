@@ -65,6 +65,28 @@ angular.module('myApp.controllers', [])
                 });
         };
 
+        $scope.disable = function () {
+            API.setState($scope.jobId, 'canceled')
+                .success(function() {
+                    $location.path('/job');
+                    notification('success', 'Updated');
+                })
+                .error(function(data) {
+                    notification('error', data.message);
+                });
+        };
+
+        $scope.enable = function () {
+            API.setState($scope.jobId, 'pending')
+                .success(function() {
+                    $location.path('/job');
+                    notification('success', 'Updated');
+                })
+                .error(function(data) {
+                    notification('error', data.message);
+                });
+        };
+
         $scope.delete = function() {
             if (!confirm("Are you sure?")) {
               return
