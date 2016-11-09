@@ -3,6 +3,7 @@ angular.module('myApp', [
     'myApp.services',
     'myApp.filters',
     'myApp.providers',
+    'myApp.factories',
     'toastr',
     'ngRoute',
     'ui.bootstrap',
@@ -45,6 +46,7 @@ angular.module('myApp', [
             .otherwise('/');
     })
 
-    .run(function($rootScope) {
+    .run(function($rootScope, TitleFactory) {
         $rootScope.partialsPath = 'partials';
+        $rootScope.TitleFactory = TitleFactory;
     })

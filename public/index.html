@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 <head>
-    <title>Peskar Web Control</title>
+    <title ng-bind="TitleFactory.get()">Peskar Web Control</title>
     <meta http-equiv=Content-Type content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Lev Aminov <leoderoko@gmail.com>">
@@ -21,5 +21,6 @@
     <script src="js/controllers.js"></script>
     <script src="js/filters.js"></script>
     <script src="js/providers.js"></script>
+    <script src="js/factories.js"></script>
 </body>
 </html>

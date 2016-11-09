@@ -1,6 +1,7 @@
 angular.module('myApp.controllers', [])
 
-    .controller('JobsController', function ($scope, $interval, $location, API) {
+    .controller('JobsController', function ($scope, $interval, $location, TitleFactory, API) {
+        TitleFactory.set('Jobs');
         $scope.jobs = {};
 
         GetJobs();
@@ -21,7 +22,8 @@ angular.module('myApp.controllers', [])
         };
     })
 
-    .controller('WorkersController', function ($scope, $interval, API) {
+    .controller('WorkersController', function ($scope, $interval, TitleFactory, API) {
+        TitleFactory.set('Workers');
         $scope.workers = {};
 
         GetWorkers();
@@ -38,7 +40,8 @@ angular.module('myApp.controllers', [])
         }
     })
 
-    .controller('JobController', function ($scope, $routeParams, $location, notification, API) {
+    .controller('JobController', function ($scope, $routeParams, $location, notification, TitleFactory, API) {
+        TitleFactory.set('Job');
         $scope.job = {};
 
         if (angular.isDefined($routeParams.jobId)) {
