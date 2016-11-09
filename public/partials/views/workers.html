@@ -10,27 +10,13 @@
     </div>
 </div>
 
-<div class="container">
-    <div class="alert alert-danger" role="alert" ng-show="!online">
-        <a href="#" class="alert-link">Cant connect to API server.</a>
-    </div>
-    <div ng-show="online">
-        <div>
-            <p ng-show="workers | isEmpty">
-                Empty list.
-            </p>
-            <table class="table" ng-hide="workers | isEmpty">
-                <tr>
-                    <th>IP</th>
-                    <th>User-Agent</th>
-                    <th>State</th>
-                </tr>
-                <tr ng-repeat="worker in workers">
-                    <td>{{ worker.ip }}</td>
-                    <td>{{ worker.user_agent }}</td>
-                    <td>{{ worker.state }}</td>
-                </tr>
-            </table>
+<div class="container padding">
+    <div ng-repeat="worker in workers" class="entity-block">
+        <div class="entity-link">
+            <div class="bs-callout entity-item" ng-class="{'bs-callout-success': worker.state == 'active'}">
+                <h4><nobr>{{ worker.ip }}</nobr></h4>
+                <p>{{ worker.user_agent }}</p>
+            </div>
         </div>
     </div>
 </div>

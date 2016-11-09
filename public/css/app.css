@@ -1,6 +1,146 @@
-.container {
-    max-width: 1024px;
+.wait-time {
+    color: #aaa;
 }
-.wait-time{
-    font-style: italic;
+
+body {
+    background: #d5e4ec;
+}
+
+.title-form {
+    padding: 20px 0 20px 0;
+}
+
+@media (min-width:1300px) {
+    .container {
+        width: 1280px
+    }
+}
+
+.container .jumbotron {
+    border-radius: 3px;
+}
+
+.jumbotron {
+    margin-top: 20px;
+    background: #fff;
+    border: 1px solid #dddddd;
+    border-radius: 3px
+}
+
+.navbar-brand {
+    padding: 15px 10px 15px 15px;
+}
+
+.nav>li>a {
+    padding-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 15px;
+}
+
+@media (max-width:768px) {
+    h2 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width:1000px) {
+    .block-active-application,
+    .block-create-application {
+        display: none;
+    }
+}
+
+.panel-heading {
+    font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: #2d3e54;
+    font-family: 'Roboto', sans-serif;
+}
+
+h2 a:hover {
+    text-decoration: none;
+}
+
+.title-block {
+    background-color: #fff;
+    border-bottom: 1px solid #dddddd;
+}
+
+.navbar-inverse {
+    background-color: #07293e;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #c4cdda;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #d5e4ec;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.padding {
+    padding-top: 20px;
+}
+
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #99b4c3;
+    border-left-width: 5px;
+    border-radius: 3px;
+    margin-top: 0;
+}
+
+.bs-callout-danger {
+    border-left-color: #ce4844;
+}
+
+.bs-callout-success {
+    border-left-color: #1b809e;
+}
+
+.entity-block {
+    display: inline-block;
+    padding-right: 6px;
+}
+
+a.entity-link {
+    color: #2d3e54;
+    text-decoration: none;
+}
+
+a.entity-link:hover .entity-item {
+    background-color: #fdfdfd;
+}
+
+@media (min-width:1000px) {
+    .entity-block {
+        width: 25%;
+    }
+}
+
+@media (max-width:1000px) {
+    .entity-block {
+        width: 100%;
+    }
+}
+
+.entity-item {
+    width: 100%;
+    background-color: #fff;
+    min-height: 120px;
+}
+
+.job-title {
+    white-space: nowrap;
+    overflow: hidden;
 }

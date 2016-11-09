@@ -24,6 +24,11 @@ angular.module('myApp', [
                 controller: 'WorkersController',
             })
 
+            .when('/job/:jobId', {
+                templateUrl: 'partials/views/job-show.html',
+                controller: 'JobController',
+            })
+
             .otherwise('/');
     })
 

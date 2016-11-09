@@ -1,0 +1,59 @@
+<ng-include src="partialsPath + '/navbar.html'"></ng-include>
+
+<div ng-show="job.id">
+    <div class="title-block">
+        <div class="container">
+            <h2><a href="#jobs">Jobs</a> / {{ job.id }}</h2>
+        </div>
+    </div>
+    <div class="container event-show">
+        <div class="jumbotron">
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>ID</td>
+                    <td>{{ job.id }}</td>
+                </tr>
+                <tr>
+                    <td>State</td>
+                    <td>{{ job.state }}</td>
+                </tr>
+                <tr ng-show="job.name.length">
+                    <td>Name</td>
+                    <td>{{ job.name }}</td>
+                </tr>
+                <tr ng-show="job.download_url.length">
+                    <td>Download URL</td>
+                    <td><a href="{{ job.download_url }}">{{ job.download_url }}</a></td>
+                </tr>
+                <tr ng-show="job.info_url.length">
+                    <td>Info URL</td>
+                    <td><a href="{{ job.info_url }}">{{ job.info_url }}</a></td>
+                </tr>
+                <tr>
+                    <td>Add time</td>
+                    <td>{{ job.added_at }}</td>
+                </tr>
+                <tr>
+                    <td>Start time</td>
+                    <td>{{ job.started_at }}</td>
+                </tr>
+                <tr>
+                    <td>Finish time</td>
+                    <td>{{ job.finished_at }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div ng-show="!job.id">
+    <div class="title-block">
+        <div class="container">
+            <h2>Not found</h2>
+        </div>
+    </div>
+</div>

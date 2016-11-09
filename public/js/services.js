@@ -17,4 +17,9 @@ angular.module('myApp.services', [])
                 apiHost + '/worker/'
             );
         };
+        this.getJob = function (jobId) {
+            return $http.get(
+                apiHost + '/job/'+jobId+'/'
+            );
+        };
     });

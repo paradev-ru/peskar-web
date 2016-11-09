@@ -1,29 +1,13 @@
 angular.module('myApp.controllers', [])
 
     .controller('JobsController', function ($scope, $interval, API) {
-        $scope.online = true;
         $scope.jobs = {};
 
-        Boot();
+        GetJobs();
 
         $interval(function() {
-            Boot();
-        }, 5000);
-
-        function Boot() {
-            GetStatus();
             GetJobs();
-        }
-
-        function GetStatus() {
-            API.getStatus()
-                .success(function (result) {
-                    $scope.online = true;
-                })
-                .error(function (result) {
-                    $scope.online = false;
-                });
-        }
+        }, 5000);
 
         function GetJobs() {
             API.getJobs()
@@ -34,29 +18,13 @@ angular.module('myApp.controllers', [])
     })
 
     .controller('WorkersController', function ($scope, $interval, API) {
-        $scope.online = true;
         $scope.workers = {};
 
-        Boot();
+        GetWorkers();
 
         $interval(function() {
-            Boot();
-        }, 5000);
-
-        function Boot() {
-            GetStatus();
             GetWorkers();
-        }
-
-        function GetStatus() {
-            API.getStatus()
-                .success(function (result) {
-                    $scope.online = true;
-                })
-                .error(function (result) {
-                    $scope.online = false;
-                });
-        }
+        }, 5000);
 
         function GetWorkers() {
             API.getWorkers()
@@ -64,4 +32,14 @@ angular.module('myApp.controllers', [])
                     $scope.workers = result;
                 });
         }
+    })
+
+    .controller('JobController', function ($scope, $routeParams, API) {
+        $scope.job = {};
+        $scope.jobId = $routeParams.jobId;
+
+        API.getJob($scope.jobId)
+            .success(function(job) {
+                $scope.job = job;
+            });
     });
