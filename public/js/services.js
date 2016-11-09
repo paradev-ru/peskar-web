@@ -28,6 +28,12 @@ angular.module('myApp.services', [])
                 job
             );
         };
+        this.editJob = function (job) {
+            return $http.put(
+                apiHost + '/job/'+job.id+'/',
+                job
+            );
+        };
         this.deleteJob = function (jobId) {
             return $http.delete(
                 apiHost + '/job/'+jobId+'/'

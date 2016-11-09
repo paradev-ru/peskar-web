@@ -17,7 +17,7 @@ angular.module('myApp.controllers', [])
                 });
         }
 
-        $scope.add = function() {
+        $scope.gotoadd = function() {
             $location.path('/add/job');
         };
     })
@@ -40,35 +40,52 @@ angular.module('myApp.controllers', [])
         }
     })
 
-    .controller('JobController', function ($scope, $routeParams, $location, notification, TitleFactory, API) {
-        TitleFactory.set('Job');
-        $scope.job = {};
+    .controller('JobDetailsController', function ($scope, $routeParams, $location, notification, TitleFactory, API) {
+        TitleFactory.set('Job details');
 
-        if (angular.isDefined($routeParams.jobId)) {
-            $scope.jobId = $routeParams.jobId;
+        $scope.jobId = $routeParams.jobId;
 
-            API.getJob($scope.jobId)
-                .success(function(job) {
-                    $scope.job = job;
+        API.getJob($scope.jobId)
+            .success(function(job) {
+                $scope.job = job;
+            });
+
+        $scope.gotoedit = function() {
+            $location.path('/job/'+$scope.jobId+'/edit');
+        };
+
+        $scope.edit = function() {
+            API.editJob($scope.job)
+                .success(function() {
+                    $location.path('/job/'+$scope.jobId);
+                    notification('success', 'Updated');
+                })
+                .error(function(data) {
+                    notification('error', data.message);
                 });
+        };
 
-            $scope.delete = function() {
-                API.deleteJob($scope.jobId)
-                    .success(function() {
-                        $location.path('/job/');
-                        notification('success', 'Deleted.');
-                    })
-                    .error(function(data) {
-                        notification('error', data.message);
-                    });
-            };
-        }
+        $scope.delete = function() {
+            API.deleteJob($scope.jobId)
+                .success(function() {
+                    $location.path('/job/');
+                    notification('success', 'Deleted');
+                })
+                .error(function(data) {
+                    notification('error', data.message);
+                });
+        };
+    })
+
+    .controller('JobAddController', function ($scope, $routeParams, $location, notification, TitleFactory, API) {
+        TitleFactory.set('Creating job');
+        $scope.job = {};
 
         $scope.save = function() {
             API.addJob($scope.job)
                 .success(function(data) {
                     $location.path('/job/'+data.id);
-                    notification('success', 'Saved.');
+                    notification('success', 'Saved');
                 })
                 .error(function(data) {
                     notification('error', data.message);

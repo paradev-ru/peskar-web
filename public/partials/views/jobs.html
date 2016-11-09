@@ -7,7 +7,7 @@
                 <h2>Jobs</h2>
             </div>
             <div class="col-md-3 text-right block-create-application">
-                <button style="margin-top: 30px;" ng-click="add()" class="btn btn-success">Create Job <span class="fa fa-plus"></span></button>
+                <button style="margin-top: 30px;" ng-click="gotoadd()" class="btn btn-success">Create Job <span class="fa fa-plus"></span></button>
             </div>
         </div>
     </div>
@@ -17,7 +17,8 @@
     <div ng-repeat="job in jobs" class="entity-block">
         <a href="#job/{{ job.id }}" class="entity-link">
             <div class="bs-callout entity-item" ng-class="{'bs-callout-success': job.state == 'working'}">
-                <h5 class="job-title"><nobr>{{ job.download_url | filename }}</nobr></h5>
+                <h4 class="job-title" ng-show="job.name.length"><nobr>{{ job.name }}</nobr></h4>
+                <h4 class="job-title" ng-hide="job.name.length"><nobr>{{ job.download_url | filename }}</nobr></h4>
                 <p>{{ job.state }}<span class="wait-time" ng-show="job.state == 'pending'"> for a {{ job.added_at | diff }}</span></p>
             </div>
         </a>

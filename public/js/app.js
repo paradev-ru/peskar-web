@@ -30,12 +30,17 @@ angular.module('myApp', [
 
             .when('/add/job', {
                 templateUrl: 'partials/views/job-add.html',
-                controller: 'JobController',
+                controller: 'JobAddController',
             })
 
             .when('/job/:jobId', {
                 templateUrl: 'partials/views/job-show.html',
-                controller: 'JobController',
+                controller: 'JobDetailsController',
+            })
+
+            .when('/job/:jobId/edit', {
+                templateUrl: 'partials/views/job-edit.html',
+                controller: 'JobDetailsController',
             })
 
             .when('/workers', {
