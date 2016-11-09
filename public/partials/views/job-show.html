@@ -10,7 +10,7 @@
                 <div class="col-md-3 text-right block-active-application">
                     <button style="margin-top: 30px;" ng-click="gotoedit()" class="btn btn-success">Edit Job <span class="fa fa-pencil"></span></button>
                     <button ng-show="job.state != 'requested' && job.state != 'working'" style="margin-top: 30px;" ng-click="delete()" class="btn btn-danger"><span class="fa fa-trash"></span></button>
-                    <button ng-show="job.state == 'pending'" style="margin-top: 30px;" ng-click="disable()" class="btn btn-danger"><span class="fa fa-stop"></span></button>
+                    <button ng-show="job.state == 'pending' || job.state == 'working'" style="margin-top: 30px;" ng-click="disable()" class="btn btn-danger"><span class="fa fa-stop"></span></button>
                     <button ng-show="job.state == 'canceled'" style="margin-top: 30px;" ng-click="enable()" class="btn btn-success"><span class="fa fa-play"></span></button>
                 </div>
             </div>
