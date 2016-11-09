@@ -8,6 +8,7 @@
     </div>
     <div class="container event-show">
         <div class="jumbotron">
+            <h4>Details</h4>
             <table class="table">
                 <tr>
                     <th>Name</th>
@@ -45,11 +46,14 @@
                     <td>Finish time</td>
                     <td>{{ job.finished_at }}</td>
                 </tr>
-                <tr ng-show="job.log.length">
-                    <td>Log</td>
-                    <td>{{ job.log }}</td>
-                </tr>
             </table>
+            <h4>Events log</h4>
+            <div ng-show="job.log.length">
+                {{ job.log }}
+            </div>
+            <div ng-hide="job.log.length">
+                Nothing found.
+            </div>
         </div>
     </div>
 </div>
