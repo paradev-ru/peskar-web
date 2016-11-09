@@ -61,7 +61,7 @@
             </table>
             <h4>Events log</h4>
             <div ng-show="job.log.length">
-                {{ job.log }}
+                <div ng-bind-html="job.log | nl2br"></div>
             </div>
             <div ng-hide="job.log.length">
                 Nothing found.
