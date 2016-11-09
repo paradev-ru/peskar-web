@@ -52,11 +52,11 @@
                     <td>Add time</td>
                     <td>{{ job.added_at | date:'medium' }}</td>
                 </tr>
-                <tr>
+                <tr ng-show="(job.started_at | date:'yyyy') != '0001'">
                     <td>Start time</td>
                     <td>{{ job.started_at | date:'medium' }}</td>
                 </tr>
-                <tr>
+                <tr ng-show="(job.finished_at | date:'yyyy') != '0001'">
                     <td>Finish time</td>
                     <td>{{ job.finished_at | date:'medium' }}</td>
                 </tr>
