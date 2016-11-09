@@ -22,4 +22,15 @@ angular.module('myApp.services', [])
                 apiHost + '/job/'+jobId+'/'
             );
         };
+        this.addJob = function (job) {
+            return $http.post(
+                apiHost + '/job/',
+                job
+            );
+        };
+        this.deleteJob = function (jobId) {
+            return $http.delete(
+                apiHost + '/job/'+jobId+'/'
+            );
+        };
     });

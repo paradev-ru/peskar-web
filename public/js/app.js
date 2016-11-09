@@ -2,11 +2,19 @@ angular.module('myApp', [
     'myApp.controllers',
     'myApp.services',
     'myApp.filters',
+    'myApp.providers',
+    'toastr',
     'ngRoute',
     'ui.bootstrap',
 ])
 
-    .config(function($routeProvider) {
+    .config(function($routeProvider, toastrConfig) {
+        angular.extend(toastrConfig, {
+            positionClass: 'toast-bottom-right',
+            preventOpenDuplicates: true,
+            timeOut: 10000,
+        });
+
         $routeProvider
             .when('/', {
                 redirectTo: function() {
@@ -19,14 +27,19 @@ angular.module('myApp', [
                 controller: 'JobsController',
             })
 
-            .when('/workers', {
-                templateUrl: 'partials/views/workers.html',
-                controller: 'WorkersController',
+            .when('/add/job', {
+                templateUrl: 'partials/views/job-add.html',
+                controller: 'JobController',
             })
 
             .when('/job/:jobId', {
                 templateUrl: 'partials/views/job-show.html',
                 controller: 'JobController',
+            })
+
+            .when('/workers', {
+                templateUrl: 'partials/views/workers.html',
+                controller: 'WorkersController',
             })
 
             .otherwise('/');

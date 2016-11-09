@@ -1,6 +1,6 @@
 angular.module('myApp.controllers', [])
 
-    .controller('JobsController', function ($scope, $interval, API) {
+    .controller('JobsController', function ($scope, $interval, $location, API) {
         $scope.jobs = {};
 
         GetJobs();
@@ -15,6 +15,10 @@ angular.module('myApp.controllers', [])
                     $scope.jobs = result;
                 });
         }
+
+        $scope.add = function() {
+            $location.path('/add/job');
+        };
     })
 
     .controller('WorkersController', function ($scope, $interval, API) {
@@ -34,12 +38,37 @@ angular.module('myApp.controllers', [])
         }
     })
 
-    .controller('JobController', function ($scope, $routeParams, API) {
+    .controller('JobController', function ($scope, $routeParams, $location, notification, API) {
         $scope.job = {};
-        $scope.jobId = $routeParams.jobId;
 
-        API.getJob($scope.jobId)
-            .success(function(job) {
-                $scope.job = job;
-            });
+        if (angular.isDefined($routeParams.jobId)) {
+            $scope.jobId = $routeParams.jobId;
+
+            API.getJob($scope.jobId)
+                .success(function(job) {
+                    $scope.job = job;
+                });
+
+            $scope.delete = function() {
+                API.deleteJob($scope.jobId)
+                    .success(function() {
+                        $location.path('/job/');
+                        notification('success', 'Deleted.');
+                    })
+                    .error(function(data) {
+                        notification('error', data.message);
+                    });
+            };
+        }
+
+        $scope.save = function() {
+            API.addJob($scope.job)
+                .success(function(data) {
+                    $location.path('/job/'+data.id);
+                    notification('success', 'Saved.');
+                })
+                .error(function(data) {
+                    notification('error', data.message);
+                });
+        };
     });
