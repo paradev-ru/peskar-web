@@ -21,7 +21,7 @@
                 </div>
                 <div class="form-group">
                     <label for="inputDownloadUrl">Download URL *</label>
-                    <input type="text" ng-keyup="check()" ng-model="job.download_url" name="appDownloadUrl" class="form-control" id="inputDownloadUrl" ng-required="true">
+                    <input type="text" ng-change="check()" ng-model="job.download_url" name="appDownloadUrl" class="form-control" id="inputDownloadUrl" ng-required="true">
                 </div>
                 <div class="form-group">
                     <label for="inputInfoUrl">Info URL</label>
