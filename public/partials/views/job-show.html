@@ -77,8 +77,11 @@
                             {{ state.changed_at | date:'medium' }}
                             <span class="label label-info" ng-show="state.initiator == 'system'">system</span>
                         </td>
-                        <td>
+                        <td ng-show="state.from_state.length">
                             {{ state.from_state }} &rarr; {{ state.to_state }}
+                        </td>
+                        <td ng-hide="state.from_state.length">
+                            new &rarr; {{ state.to_state }}
                         </td>
                     </tr>
                 </table>
