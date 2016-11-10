@@ -4,7 +4,7 @@ angular.module('myApp.factories', [])
         var title = 'Dashboard';
         return {
             get: function() {
-                return title + ' | Peskar Web Control';
+                return title + ' | Peskar';
             },
 
             set: function(newTitle) {
