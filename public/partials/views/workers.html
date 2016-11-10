@@ -16,6 +16,9 @@
             <div class="bs-callout entity-item" ng-class="{'bs-callout-success': worker.state == 'active'}">
                 <h4><nobr>{{ worker.ip }}</nobr></h4>
                 <p>{{ worker.user_agent }}</p>
+                <p>
+                    <span class="wait-time" ng-show="(worker.last_seen_at | date:'yyyy') != '0001'">Last seen {{ worker.last_seen_at | diff }} ago</span>&nbsp;
+                </p>
             </div>
         </div>
     </div>
