@@ -1,7 +1,7 @@
 angular.module('myApp.factories', [])
 
     .factory('TitleFactory', function() {
-        var title = 'Dashboard';
+        var title = 'Jobs';
         return {
             get: function() {
                 return title + ' | Peskar';
