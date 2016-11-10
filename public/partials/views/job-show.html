@@ -70,15 +70,16 @@
                 <table class="table">
                     <tr>
                         <th>Time</th>
-                        <th>Initiator</th>
-                        <th>Old state</th>
-                        <th>New state</th>
+                        <th>State</th>
                     </tr>
                     <tr ng-repeat="state in job.state_history">
-                        <td>{{ state.changed_at | date:'medium' }}</td>
-                        <td>{{ state.initiator }}</td>
-                        <td>{{ state.from_state }}</td>
-                        <td>{{ state.to_state }}</td>
+                        <td>
+                            {{ state.changed_at | date:'medium' }}
+                            <span class="label label-info" ng-show="state.initiator == 'system'">system</span>
+                        </td>
+                        <td>
+                            {{ state.from_state }} &rarr; {{ state.to_state }}
+                        </td>
                     </tr>
                 </table>
             </div>
