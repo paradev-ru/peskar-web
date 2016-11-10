@@ -4,6 +4,7 @@ angular.module('myApp', [
     'myApp.filters',
     'myApp.providers',
     'myApp.factories',
+    'myApp.constants',
     'toastr',
     'ngRoute',
     'ui.bootstrap',

@@ -1,46 +1,45 @@
 angular.module('myApp.services', [])
 
-    .service('API', function ($http, $rootScope, notification) {
-        var apiHost = 'http://api.peskar.paradev.ru'
+    .service('API', function ($http, $rootScope, notification, conf) {
         this.getStatus = function () {
             return $http.get(
-                apiHost + '/health/'
+                conf.api + '/health/'
             );
         };
         this.getJobs = function () {
             return $http.get(
-                apiHost + '/job/'
+                conf.api + '/job/'
             );
         };
         this.getWorkers = function () {
             return $http.get(
-                apiHost + '/worker/'
+                conf.api + '/worker/'
             );
         };
         this.getJob = function (jobId) {
             return $http.get(
-                apiHost + '/job/'+jobId+'/'
+                conf.api + '/job/'+jobId+'/'
             );
         };
         this.addJob = function (job) {
             return $http.post(
-                apiHost + '/job/',
+                conf.api + '/job/',
                 job
             );
         };
         this.editJob = function (job) {
             return $http.put(
-                apiHost + '/job/'+job.id+'/',
+                conf.api + '/job/'+job.id+'/',
                 job
             );
         };
         this.deleteJob = function (jobId) {
             return $http.delete(
-                apiHost + '/job/'+jobId+'/'
+                conf.api + '/job/'+jobId+'/'
             );
         };
         this.getVersion = function () {
-            $http.get(apiHost + '/version/')
+            $http.get(conf.api + '/version/')
                 .success(function(data) {
                     $rootScope.version = data;
                 })
@@ -53,7 +52,7 @@ angular.module('myApp.services', [])
                 state: state,
             }
             return $http.put(
-                apiHost + '/job/'+jobId+'/',
+                conf.api + '/job/'+jobId+'/',
                 job
             );
         };
