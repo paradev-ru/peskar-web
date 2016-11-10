@@ -100,6 +100,10 @@ angular.module('myApp.controllers', [])
                     notification('error', data.message);
                 });
         };
+
+        $scope.cancel = function() {
+            $location.path('/job/'+$scope.jobId);
+        };
     })
 
     .controller('JobAddController', function ($scope, $routeParams, $location, notification, TitleFactory, API) {
@@ -115,5 +119,9 @@ angular.module('myApp.controllers', [])
                 .error(function(data) {
                     notification('error', data.message);
                 });
+        };
+
+        $scope.cancel = function() {
+            $location.path('/job');
         };
     });
