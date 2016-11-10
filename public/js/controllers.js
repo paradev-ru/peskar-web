@@ -67,8 +67,8 @@ angular.module('myApp.controllers', [])
 
         $scope.disable = function () {
             API.setState($scope.jobId, 'canceled')
-                .success(function() {
-                    $location.path('/job');
+                .success(function(job) {
+                    $scope.job = job;
                     notification('success', 'Updated');
                 })
                 .error(function(data) {
@@ -78,8 +78,8 @@ angular.module('myApp.controllers', [])
 
         $scope.enable = function () {
             API.setState($scope.jobId, 'pending')
-                .success(function() {
-                    $location.path('/job');
+                .success(function(job) {
+                    $scope.job = job;
                     notification('success', 'Updated');
                 })
                 .error(function(data) {
