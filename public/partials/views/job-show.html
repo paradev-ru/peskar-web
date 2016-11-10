@@ -61,12 +61,26 @@
                     <td>{{ job.finished_at | date:'medium' }}</td>
                 </tr>
             </table>
-            <h4>Events log</h4>
             <div ng-show="job.log.length">
+                <h4>Events log</h4>
                 <div ng-bind-html="job.log | nl2br"></div>
             </div>
-            <div ng-hide="job.log.length">
-                Nothing found.
+            <div ng-show="job.state_history.length">
+                <h4>State history</h4>
+                <table class="table">
+                    <tr>
+                        <th>Time</th>
+                        <th>Initiator</th>
+                        <th>Old state</th>
+                        <th>New state</th>
+                    </tr>
+                    <tr ng-repeat="state in job.state_history">
+                        <td>{{ state.changed_at | date:'medium' }}</td>
+                        <td>{{ state.initiator }}</td>
+                        <td>{{ state.from_state }}</td>
+                        <td>{{ state.to_state }}</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
