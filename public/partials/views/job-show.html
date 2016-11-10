@@ -5,13 +5,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    <h2><a href="#jobs">Jobs</a> / {{ job.id }}</h2>
+                    <h2 class="p-header-text"><a href="#jobs">Jobs</a> / {{ job.id }}</h2>
                 </div>
                 <div class="col-md-3 text-right block-active-application">
-                    <button style="margin-top: 30px;" ng-click="gotoedit()" class="btn btn-success">Edit Job <span class="fa fa-pencil"></span></button>
-                    <button ng-show="job.state != 'requested' && job.state != 'working'" style="margin-top: 30px;" ng-click="delete()" class="btn btn-danger"><span class="fa fa-trash"></span></button>
-                    <button ng-show="job.state == 'pending' || job.state == 'working'" style="margin-top: 30px;" ng-click="disable()" class="btn btn-danger"><span class="fa fa-stop"></span></button>
-                    <button ng-show="job.state == 'canceled'" style="margin-top: 30px;" ng-click="enable()" class="btn btn-success"><span class="fa fa-play"></span></button>
+                    <button style="margin-top: 10px;" ng-click="gotoedit()" class="btn btn-success">Edit Job <span class="fa fa-pencil"></span></button>
+                    <button ng-show="job.state != 'requested' && job.state != 'working'" style="margin-top: 10px;" ng-click="delete()" class="btn btn-danger"><span class="fa fa-trash"></span></button>
+                    <button ng-show="job.state == 'pending' || job.state == 'working'" style="margin-top: 10px;" ng-click="disable()" class="btn btn-danger"><span class="fa fa-stop"></span></button>
+                    <button ng-show="job.state == 'canceled'" style="margin-top: 10px;" ng-click="enable()" class="btn btn-success"><span class="fa fa-play"></span></button>
                 </div>
             </div>
         </div>
@@ -90,7 +90,7 @@
 <div ng-show="!job.id">
     <div class="title-block">
         <div class="container">
-            <h2><a href="#jobs">Jobs</a> / Not found</h2>
+            <h2 class="p-header-text"><a href="#jobs">Jobs</a> / Not found</h2>
         </div>
     </div>
 </div>
