@@ -47,6 +47,11 @@ angular.module('myApp.services', [])
                     notification('error', 'Cant get version info');
                 });
         };
+        this.getStatus = function (url) {
+            return $http.get(
+                conf.api + '/http_status/?url='+url
+            );
+        };
         this.setState = function (jobId, state) {
             job = {
                 state: state,

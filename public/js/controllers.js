@@ -108,7 +108,22 @@ angular.module('myApp.controllers', [])
 
     .controller('JobAddController', function ($scope, $routeParams, $location, notification, TitleFactory, API) {
         TitleFactory.set('Creating job');
+        $scope.status_ok = false;
         $scope.job = {};
+
+        $scope.check = function() {
+            if ($scope.job.download_url === undefined) {
+                $scope.status_ok = false
+                return
+            }
+            API.getStatus($scope.job.download_url)
+                .success(function() {
+                    $scope.status_ok = true;
+                })
+                .error(function() {
+                    $scope.status_ok = false
+                });
+        };
 
         $scope.save = function() {
             API.addJob($scope.job)
