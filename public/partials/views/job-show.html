@@ -62,11 +62,11 @@
                 </tr>
             </table>
             <div ng-show="job.log.length">
-                <h4>Events log</h4>
+                <h4>Events log <button ng-click="deleteLog()" class="btn btn-default"><span class="fa fa-trash"></span></button></h4>
                 <div ng-bind-html="job.log | nl2br"></div>
             </div>
             <div ng-show="job.state_history.length">
-                <h4>State history</h4>
+                <h4>State history <button ng-click="deleteStateHistory()" class="btn btn-default"><span class="fa fa-trash"></span></button></h4>
                 <table class="table">
                     <tr>
                         <th>Time</th>

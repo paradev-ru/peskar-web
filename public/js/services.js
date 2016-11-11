@@ -61,4 +61,14 @@ angular.module('myApp.services', [])
                 job
             );
         };
+        this.deleteLog = function (jobId) {
+            return $http.delete(
+                conf.api + '/job/'+jobId+'/log/'
+            );
+        };
+        this.deleteStateHistory = function (jobId) {
+            return $http.delete(
+                conf.api + '/job/'+jobId+'/state_history/'
+            );
+        };
     });

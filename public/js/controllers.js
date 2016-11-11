@@ -104,6 +104,28 @@ angular.module('myApp.controllers', [])
         $scope.cancel = function() {
             $location.path('/job/'+$scope.jobId);
         };
+
+        $scope.deleteLog = function() {
+            API.deleteLog($scope.jobId)
+                .success(function() {
+                    $scope.job.log = "";
+                    notification('success', 'Deleted');
+                })
+                .error(function(data) {
+                    notification('error', data.message);
+                });
+        };
+
+        $scope.deleteStateHistory = function() {
+            API.deleteStateHistory($scope.jobId)
+                .success(function() {
+                    $scope.job.state_history = [];
+                    notification('success', 'Deleted');
+                })
+                .error(function(data) {
+                    notification('error', data.message);
+                });
+        };
     })
 
     .controller('JobAddController', function ($scope, $routeParams, $location, notification, TitleFactory, API) {
