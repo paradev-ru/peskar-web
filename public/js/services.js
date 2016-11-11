@@ -28,6 +28,7 @@ angular.module('myApp.services', [])
             );
         };
         this.editJob = function (job) {
+            job.log = "";
             return $http.put(
                 conf.api + '/job/'+job.id+'/',
                 job
