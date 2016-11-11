@@ -71,4 +71,14 @@ angular.module('myApp.services', [])
                 conf.api + '/job/'+jobId+'/state_history/'
             );
         };
+        this.getLog = function (jobId) {
+            return $http.get(
+                conf.api + '/job/'+jobId+'/log/'
+            );
+        };
+        this.getStateHistory = function (jobId) {
+            return $http.get(
+                conf.api + '/job/'+jobId+'/state_history/'
+            );
+        };
     });
