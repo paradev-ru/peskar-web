@@ -8,6 +8,7 @@ angular.module('myApp', [
     'toastr',
     'ngRoute',
     'ui.bootstrap',
+    'ngSanitize',
 ])
 
     .config(function($routeProvider, toastrConfig) {

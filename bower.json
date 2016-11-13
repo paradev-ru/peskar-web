@@ -22,6 +22,7 @@
     "angular-route": "^1.5.8",
     "angular-bootstrap": "^2.2.0",
     "font-awesome": "^4.7.0",
-    "angular-toastr": "^2.1.1"
+    "angular-toastr": "^2.1.1",
+    "angular-sanitize": "^1.5.8"
   }
 }

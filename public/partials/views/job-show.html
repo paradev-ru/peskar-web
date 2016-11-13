@@ -38,7 +38,7 @@
                 </tr>
                 <tr ng-show="job.description.length">
                     <td>Description</td>
-                    <td ng-bind-html="job.description | nl2br"></td>
+                    <td ng-bind-html="job.description | linky"></td>
                 </tr>
                 <tr ng-show="job.download_url.length">
                     <td>Download URL</td>
