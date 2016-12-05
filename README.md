@@ -1,3 +1,3 @@
 # Peskar Web
 
-[![Screen][http://shot.weburg.ru/leo/s3w1r.png]]
+[[http://shot.weburg.ru/leo/s3w1r.png|alt=Screen]]
