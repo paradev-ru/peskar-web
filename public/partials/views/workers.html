@@ -4,22 +4,37 @@
     <div class="container">
         <div class="row">
             <div class="col-md-9">
-                <h2 class="p-header-text">Workers</h2>
+                <h2 class="p-header-text">Агенты</h2>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container padding">
-    <div ng-repeat="worker in workers" class="entity-block">
-        <div class="entity-link">
-            <div class="bs-callout entity-item" ng-class="{'bs-callout-success': worker.state == 'active'}">
-                <h4><nobr>{{ worker.ip }}</nobr></h4>
-                <p>{{ worker.user_agent }}</p>
-                <p>
-                    <span class="wait-time" ng-show="(worker.last_seen_at | date:'yyyy') != '0001'">Last seen {{ worker.last_seen_at | diff }} ago</span>&nbsp;
-                </p>
+<div class="container padding page_content">
+    <div style="padding-bottom: 10px;">
+        <form name="search" class="title-form">
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="psk-label" for="searchText">Поиск</label>
+                    <input class="form-control" name="searchText" id="searchText" type="text" ng-model="searchText">
+                </div>
             </div>
-        </div>
+        </form>
     </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IP-адрес</th>
+                <th>User-Agent</th>
+                <th class="psk-table_lastseen">Последняя активность</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="worker in workers | orderBy:'-last_seen_at' | filter:searchText">
+                <td>{{ worker.ip }}</td>
+                <td>{{ worker.user_agent }}</td>
+                <td class="psk-table_lastseen">{{ worker.last_seen_at | date : 'dd.M.yyyy, HH:mm' }}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

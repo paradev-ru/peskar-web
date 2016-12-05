@@ -1,10 +1,10 @@
 angular.module('myApp.factories', [])
 
     .factory('TitleFactory', function() {
-        var title = 'Jobs';
+        var title = 'Задачи';
         return {
             get: function() {
-                return title + ' | Peskar';
+                return title + ' | Пескарь';
             },
 
             set: function(newTitle) {

@@ -50,6 +50,16 @@ angular.module('myApp', [
                 controller: 'WorkersController',
             })
 
+            .when('/config', {
+                templateUrl: 'partials/views/config.html',
+                controller: 'ConfigController',
+            })
+
+            .when('/work_time', {
+                templateUrl: 'partials/views/work_time.html',
+                controller: 'WorkTimeController',
+            })
+
             .otherwise('/');
     })
 

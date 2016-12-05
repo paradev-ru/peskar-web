@@ -82,4 +82,9 @@ angular.module('myApp.services', [])
                 conf.api + '/job/'+jobId+'/state_history/'
             );
         };
+        this.getWorkTime = function () {
+            return $http.get(
+                conf.api + '/work_time/'
+            );
+        };
     });

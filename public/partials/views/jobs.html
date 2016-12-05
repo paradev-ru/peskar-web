@@ -4,23 +4,64 @@
     <div class="container">
         <div class="row">
             <div class="col-md-9">
-                <h2 class="p-header-text">Jobs</h2>
+                <h2 class="p-header-text">Задачи</h2>
             </div>
             <div class="col-md-3 text-right block-create-application">
-                <button style="margin-top: 10px;" ng-click="gotoadd()" class="btn btn-success">Create Job <span class="fa fa-plus"></span></button>
+                <button style="margin-top: 10px;" ng-click="gotoadd()" class="btn btn-primary">Новая задача <span class="fa fa-plus"></span></button>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container padding">
-    <div ng-repeat="job in jobs" class="entity-block">
-        <a href="#job/{{ job.id }}" class="entity-link">
-            <div class="bs-callout entity-item" ng-class="{'bs-callout-success': job.state == 'working' || job.state == 'requested'}">
-                <h4 class="line-limit" ng-show="job.name.length"><nobr>{{ job.name }}</nobr></h4>
-                <h4 class="line-limit" ng-hide="job.name.length"><nobr>{{ job.download_url | filename }}</nobr></h4>
-                <p>{{ job.state }}<span class="wait-time" ng-show="job.state == 'pending'"> for a {{ job.added_at | diff }}</span><span class="wait-time" ng-show="job.state == 'working'"> for a {{ job.started_at | diff }}</span></p>
+<div class="container padding page_content">
+    <div style="padding-bottom: 10px;">
+        <form name="search" class="title-form">
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="psk-label" for="searchText">Поиск по названию</label>
+                    <input class="form-control" name="searchText" id="searchText" type="text" ng-model="searchText">
+                </div>
+                <div class="col-md-4">
+                    <label class="psk-label" for="filterState">Фильтр по статусу</label>
+                    <select class="form-control" ng-model="filterState" name="filterState" id="filterState">
+                        <option value="all">Все</option>
+                        <option value="pending">В ожидании</option>
+                        <option value="working">В работе</option>
+                        <option value="finished">Завершено</option>
+                        <option value="canceled">Отменено</option>
+                        <option value="failed">Ошибка</option>
+                    </select>
+                </div>
             </div>
-        </a>
+        </form>
     </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Статус</th>
+                <th>Название</th>
+                <th class="psk-table_started">Начало</th>
+                <th class="psk-table_ended">Окончание</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="job in jobs | orderBy:'-added_at' | filter:searchText | filter:FilterState">
+                <td><a href="#job/{{ job.id }}">{{ job.id | limitTo: 8 }}</a></td>
+                <td ng-switch="job.state">
+                    <span ng-switch-when="finished" class="psk-table_badge label label-primary">Завершено</span>
+                    <span ng-switch-when="pending" class="psk-table_badge label label-default">В ожидании</span>
+                    <span ng-switch-when="working" class="psk-table_badge label label-success">В работе</span>
+                    <span ng-switch-when="canceled" class="psk-table_badge label label-warning">Отменено</span>
+                    <span ng-switch-when="failed" class="psk-table_badge label label-danger">Ошибка</span>
+                    <span ng-switch-default class="psk-table_badge label label-default">{{ job.state }}</span>
+                </td>
+                <td>{{ job.name }}</td>
+                <td ng-show="(job.started_at | date:'yyyy') != '0001'" class="psk-table_started">{{ job.started_at | date : 'dd.M.yyyy, HH:mm' }}</td>
+                <td ng-show="(job.started_at | date:'yyyy') == '0001'" class="psk-table_started">–</td>
+                <td ng-show="(job.finished_at | date:'yyyy') != '0001'" class="psk-table_ended">{{ job.finished_at | date : 'dd.M.yyyy, HH:mm' }}</td>
+                <td ng-show="(job.finished_at | date:'yyyy') == '0001'" class="psk-table_ended">–</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

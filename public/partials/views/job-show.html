@@ -5,10 +5,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    <h2 class="p-header-text"><a href="#jobs">Jobs</a> / {{ job.id }}</h2>
+                    <h2 class="p-header-text"><a href="#jobs">Задачи</a> / #{{ job.id }}</h2>
                 </div>
                 <div class="col-md-3 text-right block-active-application">
-                    <button style="margin-top: 10px;" ng-click="gotoedit()" class="btn btn-success">Edit Job <span class="fa fa-pencil"></span></button>
+                    <button style="margin-top: 10px;" ng-click="gotoedit()" class="btn btn-primary">Изменить <span class="fa fa-pencil"></span></button>
                     <button ng-show="job.state != 'requested' && job.state != 'working'" style="margin-top: 10px;" ng-click="delete()" class="btn btn-danger"><span class="fa fa-trash"></span></button>
                     <button ng-show="job.state == 'pending' || job.state == 'working'" style="margin-top: 10px;" ng-click="disable()" class="btn btn-danger"><span class="fa fa-stop"></span></button>
                     <button ng-show="job.state == 'canceled' || job.state == 'finished' || job.state == 'failed'" style="margin-top: 10px;" ng-click="enable()" class="btn btn-success"><span class="fa fa-play"></span></button>
@@ -16,65 +16,64 @@
             </div>
         </div>
     </div>
-    <div class="container event-show">
-        <div class="jumbotron">
-            <h4>Details</h4>
+    <div class="container padding page_content">
+        <div>
+            <h4>Детали задачи</h4>
             <table class="table">
-                <tr>
-                    <th>Name</th>
-                    <th>Value</th>
-                </tr>
-                <tr>
-                    <td>ID</td>
-                    <td>{{ job.id }}</td>
-                </tr>
-                <tr>
-                    <td>State</td>
-                    <td>{{ job.state }}</td>
-                </tr>
                 <tr ng-show="job.name.length">
-                    <td>Name</td>
+                    <td>Название</td>
                     <td>{{ job.name }}</td>
                 </tr>
+                <tr>
+                    <td>Статус</td>
+                    <td ng-switch="job.state">
+                        <span ng-switch-when="finished" class="psk-table_badge label label-primary">Завершено</span>
+                        <span ng-switch-when="pending" class="psk-table_badge label label-default">В ожидании</span>
+                        <span ng-switch-when="working" class="psk-table_badge label label-success">В работе</span>
+                        <span ng-switch-when="canceled" class="psk-table_badge label label-warning">Отменено</span>
+                        <span ng-switch-when="failed" class="psk-table_badge label label-danger">Ошибка</span>
+                        <span ng-switch-default class="psk-table_badge label label-default">{{ job.state }}</span>
+                    </td>
+                </tr>
                 <tr ng-show="job.description.length">
-                    <td>Description</td>
+                    <td>Описание</td>
                     <td ng-bind-html="job.description | linky"></td>
                 </tr>
                 <tr ng-show="job.download_url.length">
-                    <td>Download URL</td>
+                    <td>Ссылка на файл</td>
                     <td><a href="{{ job.download_url }}">{{ job.download_url }}</a></td>
                 </tr>
                 <tr ng-show="job.info_url.length">
-                    <td>Info URL</td>
+                    <td>Ссылка на информацию</td>
                     <td><a href="{{ job.info_url }}">{{ job.info_url }}</a></td>
                 </tr>
                 <tr>
-                    <td>Add time</td>
-                    <td>{{ job.added_at | date:'medium' }}</td>
+                    <td>Время добавления</td>
+                    <td>{{ job.added_at | date : 'dd.M.yyyy, HH:mm' }}</td>
                 </tr>
                 <tr ng-show="(job.started_at | date:'yyyy') != '0001'">
-                    <td>Start time</td>
-                    <td>{{ job.started_at | date:'medium' }}</td>
+                    <td>Время начала</td>
+                    <td>{{ job.started_at | date : 'dd.M.yyyy, HH:mm' }}</td>
                 </tr>
                 <tr ng-show="(job.finished_at | date:'yyyy') != '0001'">
-                    <td>Finish time</td>
-                    <td>{{ job.finished_at | date:'medium' }}</td>
+                    <td>Время завершения</td>
+                    <td>{{ job.finished_at | date : 'dd.M.yyyy, HH:mm' }}</td>
                 </tr>
             </table>
             <div ng-show="job.log.length">
-                <h4>Events log <button ng-click="deleteLog()" class="btn btn-default"><span class="fa fa-trash"></span></button></h4>
+                <h4>События <button ng-click="deleteLog()" class="btn btn-default"><span class="fa fa-trash"></span></button></h4>
                 <div ng-bind-html="job.log | nl2br"></div>
             </div>
             <div ng-show="job.state_history.length">
-                <h4>State history <button ng-click="deleteStateHistory()" class="btn btn-default"><span class="fa fa-trash"></span></button></h4>
+                <h4>История статусов <button ng-click="deleteStateHistory()" class="btn btn-default"><span class="fa fa-trash"></span></button></h4>
                 <table class="table">
                     <tr>
-                        <th>Time</th>
-                        <th>State</th>
+                        <th>Время</th>
+                        <th>Статус</th>
                     </tr>
                     <tr ng-repeat="state in job.state_history">
                         <td>
-                            {{ state.changed_at | date:'medium' }}
+                            {{ state.changed_at | date: 'dd.M.yyyy, HH:mm' }}
                             <span class="label label-info" ng-show="state.initiator == 'system'">system</span>
                         </td>
                         <td ng-show="state.from_state.length">
@@ -93,7 +92,7 @@
 <div ng-show="!job.id">
     <div class="title-block">
         <div class="container">
-            <h2 class="p-header-text"><a href="#jobs">Jobs</a> / Not found</h2>
+            <h2 class="p-header-text"><a href="#jobs">Задачи</a> / Не найдено</h2>
         </div>
     </div>
 </div>

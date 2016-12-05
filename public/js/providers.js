@@ -10,9 +10,9 @@ angular.module('myApp.providers', [])
                 }
 
                 if (type === 'success') {
-                    title = 'Good news!';
+                    title = 'Хорошие новости';
                 } else if (type === 'error') {
-                    title = 'Oops! Something went wrong.';
+                    title = 'Что-то пошло не так';
                 }
 
                 toastr[type](message, title);

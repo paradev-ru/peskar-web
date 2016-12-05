@@ -1,0 +1,49 @@
+<ng-include src="partialsPath + '/navbar.html'"></ng-include>
+
+<div class="title-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <h2 class="p-header-text">График работы</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container padding page_content">
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Детали</h4>
+            <table class="table" ng-show="work_time">
+                <tbody>
+                    <tr>
+                        <td>Статус</td>
+                        <td ng-show="work_time.dnd_enable">
+                            <span class="psk-table_badge label label-primary">Включен</span>
+                        </td>
+                        <td ng-hide="work_time.dnd_enable">
+                            <span class="psk-table_badge label label-default">Выключен</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Начало режима отдыха</td>
+                        <td>{{ work_time.dnd_starts_at }}:00</td>
+                    </tr>
+                    <tr>
+                        <td>Окончание режима отдыха</td>
+                        <td>{{ work_time.dnd_ends_at }}:00</td>
+                    </tr>
+                    <tr>
+                        <td>Состояние</td>
+                        <td ng-show="work_time.is_work_time">Рабочий режим</td>
+                        <td ng-hide="work_time.is_work_time">Режим отдыха</td>
+                    </tr>
+                    <tr>
+                        <td>Время на сервере</td>
+                        <td>{{ work_time.local_time_utc | date: 'dd.M.yyyy, HH:mm' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

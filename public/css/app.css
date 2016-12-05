@@ -1,3 +1,52 @@
+.navbar-brand {
+    font-weight: 200;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.navbar-nav>li>a.psk-nav_link:hover {
+    opacity: 0.5;
+}
+
+.psk-label {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: .2px
+}
+
+.psk-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #666;
+}
+
+.psk-table_added, .psk-table_started, .psk-table_ended, .psk-table_lastseen {
+    text-align: right;
+}
+
+.psk-table_badge {
+    font-size: 14px;
+    letter-spacing: .2px;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+    color: #fff;
+}
+
+.page_container {
+    background-color: #fff;
+}
+
+.page_content {
+    min-height: 100vh;
+    position: relative;
+    z-index: 2;
+    transform: translate3d(0, 0, 0);
+    background-color: #fff;
+    transition: all .3s ease
+}
+
 .p-header-text {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -9,16 +58,23 @@
 
 body {
     background: #d5e4ec;
+    background-color: rgba(0, 0, 0, .03);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+
+table {
+    font-size: 14px;
+    line-height: 20px;
+    color: #000;
 }
 
 .title-form {
     padding: 20px 0 20px 0;
 }
 
-@media (min-width:1300px) {
-    .container {
-        width: 1280px
-    }
+.container {
+    max-width: 1920px
 }
 
 .container .jumbotron {
@@ -56,36 +112,35 @@ body {
     }
 }
 
-.panel-heading {
-    font-family: 'Roboto', sans-serif;
-}
 
 h2 {
     margin-top: 30px;
     margin-bottom: 30px;
-    color: #2d3e54;
-    font-family: 'Roboto', sans-serif;
 }
 
 h2 a:hover {
     text-decoration: none;
 }
 
+.page_content {
+    background-color: transparent;
+}
+
 .title-block {
-    background-color: #fff;
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid rgba(0, 0, 0, .03);
+    background-color: rgba(0, 0, 0, .03);
 }
 
 .navbar-inverse {
-    background-color: #07293e;
+    background-color: #404040;
 }
 
 .navbar-inverse .navbar-nav>li>a {
-    color: #c4cdda;
+    color: #fff;
 }
 
 .navbar-inverse .navbar-brand {
-    color: #d5e4ec;
+    color: #fff;
 }
 
 .navbar {

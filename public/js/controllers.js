@@ -1,8 +1,9 @@
 angular.module('myApp.controllers', [])
 
     .controller('JobsController', function ($scope, $interval, $location, TitleFactory, API) {
-        TitleFactory.set('Jobs');
-        $scope.jobs = {};
+        TitleFactory.set('Задачи');
+        $scope.jobs = [];
+        $scope.filterState = "all";
 
         GetJobs();
 
@@ -20,11 +21,20 @@ angular.module('myApp.controllers', [])
         $scope.gotoadd = function() {
             $location.path('/add/job');
         };
+
+        $scope.FilterState = function(job) {
+            if ($scope.filterState == "all") {
+                return true;
+            } else if ($scope.filterState == job.state) {
+                return true;
+            }
+            return false;
+        };
     })
 
     .controller('WorkersController', function ($scope, $interval, TitleFactory, API) {
-        TitleFactory.set('Workers');
-        $scope.workers = {};
+        TitleFactory.set('Агенты');
+        $scope.workers = [];
 
         GetWorkers();
 
@@ -41,7 +51,7 @@ angular.module('myApp.controllers', [])
     })
 
     .controller('JobDetailsController', function ($scope, $routeParams, $location, notification, TitleFactory, API) {
-        TitleFactory.set('Job details');
+        TitleFactory.set('Детали');
 
         $scope.jobId = $routeParams.jobId;
 
@@ -58,7 +68,7 @@ angular.module('myApp.controllers', [])
             API.editJob($scope.job)
                 .success(function() {
                     $location.path('/job/'+$scope.jobId);
-                    notification('success', 'Updated');
+                    notification('success', 'Обновлено');
                 })
                 .error(function(data) {
                     notification('error', data.message);
@@ -69,7 +79,7 @@ angular.module('myApp.controllers', [])
             API.setState($scope.jobId, 'canceled')
                 .success(function(job) {
                     $scope.job = job;
-                    notification('success', 'Updated');
+                    notification('success', 'Обновлено');
                 })
                 .error(function(data) {
                     notification('error', data.message);
@@ -80,7 +90,7 @@ angular.module('myApp.controllers', [])
             API.setState($scope.jobId, 'pending')
                 .success(function(job) {
                     $scope.job = job;
-                    notification('success', 'Updated');
+                    notification('success', 'Обновлено');
                 })
                 .error(function(data) {
                     notification('error', data.message);
@@ -88,13 +98,13 @@ angular.module('myApp.controllers', [])
         };
 
         $scope.delete = function() {
-            if (!confirm("Are you sure?")) {
+            if (!confirm("Вы уверены?")) {
               return
             }
             API.deleteJob($scope.jobId)
                 .success(function() {
                     $location.path('/job/');
-                    notification('success', 'Deleted');
+                    notification('success', 'Удалено');
                 })
                 .error(function(data) {
                     notification('error', data.message);
@@ -109,7 +119,7 @@ angular.module('myApp.controllers', [])
             API.deleteLog($scope.jobId)
                 .success(function() {
                     $scope.job.log = "";
-                    notification('success', 'Deleted');
+                    notification('success', 'Удалено');
                 })
                 .error(function(data) {
                     notification('error', data.message);
@@ -120,7 +130,7 @@ angular.module('myApp.controllers', [])
             API.deleteStateHistory($scope.jobId)
                 .success(function() {
                     $scope.job.state_history = [];
-                    notification('success', 'Deleted');
+                    notification('success', 'Удалено');
                 })
                 .error(function(data) {
                     notification('error', data.message);
@@ -129,7 +139,7 @@ angular.module('myApp.controllers', [])
     })
 
     .controller('JobAddController', function ($scope, $routeParams, $location, notification, TitleFactory, API) {
-        TitleFactory.set('Creating job');
+        TitleFactory.set('Новая задача');
         $scope.status_ok = false;
         $scope.job = {};
 
@@ -151,7 +161,7 @@ angular.module('myApp.controllers', [])
             API.addJob($scope.job)
                 .success(function(data) {
                     $location.path('/job/'+data.id);
-                    notification('success', 'Saved');
+                    notification('success', 'Сохранено');
                 })
                 .error(function(data) {
                     notification('error', data.message);
@@ -161,4 +171,15 @@ angular.module('myApp.controllers', [])
         $scope.cancel = function() {
             $location.path('/job');
         };
+    })
+
+    .controller('WorkTimeController', function ($scope, API) {
+        API.getWorkTime()
+                .success(function(data) {
+                    $scope.work_time = data;
+                });
+    })
+
+    .controller('ConfigController', function ($scope) {
+
     });

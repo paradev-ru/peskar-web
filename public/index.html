@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 <head>
-    <title ng-bind="TitleFactory.get()">Peskar</title>
+    <title ng-bind="TitleFactory.get()">Пескарь</title>
     <meta http-equiv=Content-Type content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Lev Aminov <leoderoko@gmail.com>">
@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body ng-cloak>
-    <ng-view></ng-view>
+    <div class="page_container">
+        <ng-view></ng-view>
+    </div>
     <script src="vendor/angular/angular.min.js"></script>
     <script src="vendor/angular-route/angular-route.min.js"></script>
     <script src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
