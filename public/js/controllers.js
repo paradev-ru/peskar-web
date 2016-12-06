@@ -180,6 +180,20 @@ angular.module('myApp.controllers', [])
                 });
     })
 
+    .controller('WeburgMovieInfo', function ($scope, API, notification) {
+        $scope.info = [];
+        $scope.getInfo = function() {
+            API.getWeburgMovieInfo($scope.url)
+                .success(function(data) {
+                    $scope.info = data;
+                })
+                .error(function() {
+                    $scope.info = [];
+                    notification('error', 'Не удалось получить информацию');
+                });
+        };
+    })
+
     .controller('ConfigController', function ($scope) {
 
     });

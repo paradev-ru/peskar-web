@@ -13,7 +13,27 @@
 </head>
 <body ng-cloak>
     <div class="page_container">
-        <ng-view></ng-view>
+        <div class="page_content">
+            <ng-view></ng-view>
+            <footer class="psk-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4">
+                            Инструменты
+                            <div>
+                                <a href="#weburg_movie_info">Weburg ссылка</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div>&copy; Paradev.ru</div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
     </div>
     <script src="vendor/angular/angular.min.js"></script>
     <script src="vendor/angular-route/angular-route.min.js"></script>

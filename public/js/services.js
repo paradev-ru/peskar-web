@@ -87,4 +87,9 @@ angular.module('myApp.services', [])
                 conf.api + '/work_time/'
             );
         };
+        this.getWeburgMovieInfo = function (url) {
+            return $http.get(
+                conf.api + '/weburg_movie_info/?url=' + url
+            );
+        };
     });

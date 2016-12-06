@@ -60,6 +60,11 @@ angular.module('myApp', [
                 controller: 'WorkTimeController',
             })
 
+            .when('/weburg_movie_info', {
+                templateUrl: 'partials/views/weburg_movie_info.html',
+                controller: 'WeburgMovieInfo',
+            })
+
             .otherwise('/');
     })
 

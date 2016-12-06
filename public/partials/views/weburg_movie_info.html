@@ -1,0 +1,43 @@
+<ng-include src="partialsPath + '/navbar.html'"></ng-include>
+
+<div class="title-block">
+    <div class="container">
+        <h2 class="p-header-text">Weburg ссылка</h2>
+    </div>
+</div>
+
+<div class="container psk-overview">
+    <div class="row">
+        <div class="col-md-6">
+            <form name="job" ng-submit="getInfo()">
+                <div class="form-group">
+                    <label class="psk-label" for="url">Ссылка</label>
+                    <input type="text" ng-model="url" name="url" class="form-control" id="url" ng-required="true" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" ng-disabled="job.$invalid" type="submit">Обработать</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div ng-show="info.length">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Название</th>
+                    <th>Ссылка</th>
+                    <th class="psk-table_size">Размер</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="(id, file) in info">
+                    <td>{{ id+1 }}</td>
+                    <td>{{ file.name }}</td>
+                    <td><a href="{{ file.download_url }}">{{ file.download_url }}</a></td>
+                    <td class="psk-table_size">{{ file.size }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

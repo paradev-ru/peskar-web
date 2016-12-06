@@ -1,3 +1,14 @@
+.psk-overview {
+    margin-top: 34px;
+    margin-bottom: 34px
+}
+
+.psk-footer {
+    border-top: 1px solid #000;
+    padding-top: 34px;
+    padding-bottom: 55px
+}
+
 .navbar-brand {
     font-weight: 200;
     color: #fff;
@@ -28,7 +39,7 @@
     color: #666;
 }
 
-.psk-table_added, .psk-table_started, .psk-table_ended, .psk-table_lastseen {
+.psk-table_added, .psk-table_started, .psk-table_ended, .psk-table_lastseen, .psk-table_size {
     text-align: right;
 }
 
