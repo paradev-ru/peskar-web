@@ -2,7 +2,7 @@
 
 <div class="title-block">
     <div class="container">
-        <h2 class="p-header-text"><a href="#jobs">Задачи</a> / <a href="#job/{{ job.id }}">#{{ job.id }}</a> / Правка</h2>
+        <h2 class="p-header-text"><a href="#jobs">Задачи</a> / <a href="#job/{{ job.id }}">#{{ job.id | limitTo: 8 }}</a> / Правка</h2>
     </div>
 </div>
 

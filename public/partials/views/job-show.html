@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    <h2 class="p-header-text"><a href="#jobs">Задачи</a> / #{{ job.id }}</h2>
+                    <h2 class="p-header-text"><a href="#jobs">Задачи</a> / #{{ job.id | limitTo: 8 }}</h2>
                 </div>
                 <div class="col-md-3 text-right block-active-application">
                     <button style="margin-top: 10px;" ng-click="gotoedit()" class="btn btn-primary">Изменить <span class="fa fa-pencil"></span></button>
@@ -18,7 +18,7 @@
     </div>
     <div class="container psk-overview">
         <div>
-            <h4>Детали задачи</h4>
+            <h4 class="psk-h-first">Детали задачи</h4>
             <table class="table">
                 <tr ng-show="job.name.length">
                     <td>Название</td>
@@ -61,7 +61,7 @@
                 </tr>
             </table>
             <div ng-show="log.length">
-                <h4>События <button ng-click="deleteLog()" class="btn btn-default"><span class="fa fa-trash"></span></button></h4>
+                <h4 class="psk-h-first">События <button ng-click="deleteLog()" class="btn btn-default"><span class="fa fa-trash"></span></button></h4>
                 <table class="table">
                     <tr>
                         <th class="psk-table_time">Время</th>
@@ -78,7 +78,7 @@
                 </table>
             </div>
             <div ng-show="state_history.length">
-                <h4>История статусов <button ng-click="deleteStateHistory()" class="btn btn-default"><span class="fa fa-trash"></span></button></h4>
+                <h4 class="psk-h-first">История статусов <button ng-click="deleteStateHistory()" class="btn btn-default"><span class="fa fa-trash"></span></button></h4>
                 <table class="table">
                     <tr>
                         <th class="psk-table_time">Время</th>
