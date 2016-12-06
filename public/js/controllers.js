@@ -84,6 +84,20 @@ angular.module('myApp.controllers', [])
                 $scope.job = job;
             });
 
+        $scope.update_logs = function(job_id) {
+            API.getStateHistory(job_id)
+                .success(function(state_history) {
+                    $scope.state_history = state_history;
+                });
+
+            API.getLog(job_id)
+                .success(function(log) {
+                    $scope.log = log;
+                });
+        };
+
+        $scope.update_logs($scope.jobId);
+
         $scope.gotoedit = function() {
             $location.path('/job/'+$scope.jobId+'/edit');
         };
@@ -103,6 +117,7 @@ angular.module('myApp.controllers', [])
             API.setState($scope.jobId, 'canceled')
                 .success(function(job) {
                     $scope.job = job;
+                    $scope.update_logs(job.id);
                     notification('success', 'Обновлено');
                 })
                 .error(function(data) {
@@ -114,6 +129,7 @@ angular.module('myApp.controllers', [])
             API.setState($scope.jobId, 'pending')
                 .success(function(job) {
                     $scope.job = job;
+                    $scope.update_logs(job.id);
                     notification('success', 'Обновлено');
                 })
                 .error(function(data) {
@@ -142,7 +158,7 @@ angular.module('myApp.controllers', [])
         $scope.deleteLog = function() {
             API.deleteLog($scope.jobId)
                 .success(function() {
-                    $scope.job.log = "";
+                    $scope.log = [];
                     notification('success', 'Удалено');
                 })
                 .error(function(data) {
@@ -153,7 +169,7 @@ angular.module('myApp.controllers', [])
         $scope.deleteStateHistory = function() {
             API.deleteStateHistory($scope.jobId)
                 .success(function() {
-                    $scope.job.state_history = [];
+                    $scope.state_history = [];
                     notification('success', 'Удалено');
                 })
                 .error(function(data) {

@@ -60,18 +60,31 @@
                     <td>{{ job.finished_at | date : 'dd.M.yyyy, HH:mm' }}</td>
                 </tr>
             </table>
-            <div ng-show="job.log.length">
+            <div ng-show="log.length">
                 <h4>События <button ng-click="deleteLog()" class="btn btn-default"><span class="fa fa-trash"></span></button></h4>
-                <div ng-bind-html="job.log | nl2br"></div>
+                <table class="table">
+                    <tr>
+                        <th class="psk-table_time">Время</th>
+                        <th>Сообщение</th>
+                    </tr>
+                    <tr ng-repeat="item in log">
+                        <td>
+                            {{ item.added_at | date: 'dd.M.yyyy, HH:mm' }}
+                        </td>
+                        <td>
+                            {{ item.message }}
+                        </td>
+                    </tr>
+                </table>
             </div>
-            <div ng-show="job.state_history.length">
+            <div ng-show="state_history.length">
                 <h4>История статусов <button ng-click="deleteStateHistory()" class="btn btn-default"><span class="fa fa-trash"></span></button></h4>
                 <table class="table">
                     <tr>
-                        <th>Время</th>
+                        <th class="psk-table_time">Время</th>
                         <th>Статус</th>
                     </tr>
-                    <tr ng-repeat="state in job.state_history">
+                    <tr ng-repeat="state in state_history">
                         <td>
                             {{ state.changed_at | date: 'dd.M.yyyy, HH:mm' }}
                             <span class="label label-info" ng-show="state.initiator == 'system'">system</span>
