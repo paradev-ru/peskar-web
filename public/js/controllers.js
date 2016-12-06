@@ -5,11 +5,23 @@ angular.module('myApp.controllers', [])
         $scope.jobs = [];
         $scope.filterState = "all";
 
-        GetJobs();
+        var promise;
 
-        $interval(function() {
-            GetJobs();
-        }, 5000);
+        $scope.start = function() {
+            GetJobs()
+            $scope.stop();
+            promise = $interval(GetJobs, 5000);
+        };
+
+        $scope.stop = function() {
+            $interval.cancel(promise);
+        };
+
+        $scope.start();
+
+        $scope.$on('$destroy', function() {
+            $scope.stop();
+        });
 
         function GetJobs() {
             API.getJobs()
@@ -36,11 +48,23 @@ angular.module('myApp.controllers', [])
         TitleFactory.set('Агенты');
         $scope.workers = [];
 
-        GetWorkers();
+        var promise;
 
-        $interval(function() {
-            GetWorkers();
-        }, 5000);
+        $scope.start = function() {
+            GetWorkers()
+            $scope.stop();
+            promise = $interval(GetWorkers, 5000);
+        };
+
+        $scope.stop = function() {
+            $interval.cancel(promise);
+        };
+
+        $scope.start();
+
+        $scope.$on('$destroy', function() {
+            $scope.stop();
+        });
 
         function GetWorkers() {
             API.getWorkers()
