@@ -213,14 +213,16 @@ angular.module('myApp.controllers', [])
         };
     })
 
-    .controller('WorkTimeController', function ($scope, API) {
+    .controller('WorkTimeController', function ($scope, API, TitleFactory) {
+        TitleFactory.set('График работы');
         API.getWorkTime()
                 .success(function(data) {
                     $scope.work_time = data;
                 });
     })
 
-    .controller('WeburgMovieInfo', function ($scope, API, notification) {
+    .controller('WeburgMovieInfo', function ($scope, API, notification, TitleFactory) {
+        TitleFactory.set('Weburg ссылка');
         $scope.info = [];
         $scope.getInfo = function() {
             API.getWeburgMovieInfo($scope.url)
@@ -234,6 +236,6 @@ angular.module('myApp.controllers', [])
         };
     })
 
-    .controller('ConfigController', function ($scope) {
-
+    .controller('ConfigController', function ($scope, TitleFactory) {
+        TitleFactory.set('Настройки');
     });
