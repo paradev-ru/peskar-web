@@ -1,4 +1,6 @@
-.PHONE: all
+.PHONE: run all deploy
+
+run: all
 
 all:
 	@php -S 0.0.0.0:8081 -t public/
