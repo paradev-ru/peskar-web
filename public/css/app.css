@@ -1,3 +1,9 @@
+.psk-table_initiator {
+    color: #aaa;
+}
+.psk-bold_initiator {
+    text-decoration: underline;
+}
 .psk-h-first {
     margin-top: 0px;
     margin-bottom: 10px;

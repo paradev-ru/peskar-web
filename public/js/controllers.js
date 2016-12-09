@@ -176,6 +176,16 @@ angular.module('myApp.controllers', [])
                     notification('error', data.message);
                 });
         };
+
+        $scope.disableHighlight = function() {
+            $scope.highlight_initiator = "";
+        };
+
+        $scope.highlight = function(initiator) {
+            if ($scope.highlight_initiator != initiator) {
+                $scope.highlight_initiator = initiator;
+            }
+        };
     })
 
     .controller('JobAddController', function ($scope, $routeParams, $location, notification, TitleFactory, API) {

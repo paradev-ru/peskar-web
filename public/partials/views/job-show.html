@@ -62,17 +62,17 @@
             </table>
             <div ng-show="log.length">
                 <h4 class="psk-h-first">События <button ng-click="deleteLog()" class="btn btn-default"><span class="fa fa-trash"></span></button></h4>
-                <table class="table">
+                <table class="table table-hover" ng-mouseleave="disableHighlight()">
                     <tr>
                         <th class="psk-table_time">Время</th>
                         <th>Сообщение</th>
                     </tr>
-                    <tr ng-repeat="item in log">
+                    <tr ng-repeat="item in log" ng-mouseover="highlight(item.initiator)" ng-class="{ 'active': highlight_initiator == item.initiator }">
                         <td>
                             {{ item.added_at | date: 'dd.M.yyyy, HH:mm' }}
                         </td>
                         <td>
-                            {{ item.message }}
+                            {{ item.message }} <small ng-show="item.initiator != 'api'" class="psk-table_initiator">{{ item.initiator }}</small>
                         </td>
                     </tr>
                 </table>
