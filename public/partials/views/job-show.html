@@ -49,15 +49,15 @@
                 </tr>
                 <tr>
                     <td>Время добавления</td>
-                    <td>{{ job.added_at | date : 'dd.M.yyyy, HH:mm' }}</td>
+                    <td>{{ job.added_at | date : 'dd.MM.yyyy, HH:mm' }}</td>
                 </tr>
                 <tr ng-show="(job.started_at | date:'yyyy') != '0001'">
                     <td>Время начала</td>
-                    <td>{{ job.started_at | date : 'dd.M.yyyy, HH:mm' }}</td>
+                    <td>{{ job.started_at | date : 'dd.MM.yyyy, HH:mm' }}</td>
                 </tr>
                 <tr ng-show="(job.finished_at | date:'yyyy') != '0001'">
                     <td>Время завершения</td>
-                    <td>{{ job.finished_at | date : 'dd.M.yyyy, HH:mm' }}</td>
+                    <td>{{ job.finished_at | date : 'dd.MM.yyyy, HH:mm' }}</td>
                 </tr>
             </table>
             <div ng-show="log.length">
@@ -69,7 +69,7 @@
                     </tr>
                     <tr ng-repeat="item in log" ng-mouseover="highlight(item.initiator)" ng-class="{ 'active': highlight_initiator == item.initiator }">
                         <td>
-                            {{ item.added_at | date: 'dd.M.yyyy, HH:mm' }}
+                            {{ item.added_at | date: 'dd.MM.yyyy, HH:mm' }}
                         </td>
                         <td>
                             {{ item.message }} <small ng-show="item.initiator != 'api'" class="psk-table_initiator">{{ item.initiator }}</small>
@@ -86,7 +86,7 @@
                     </tr>
                     <tr ng-repeat="state in state_history">
                         <td>
-                            {{ state.changed_at | date: 'dd.M.yyyy, HH:mm' }}
+                            {{ state.changed_at | date: 'dd.MM.yyyy, HH:mm' }}
                             <span class="label label-info" ng-show="state.initiator == 'system'">system</span>
                         </td>
                         <td ng-show="state.from_state.length">
